@@ -1,0 +1,75 @@
+body
+{
+	background-color:#800000;     	
+}
+.cube
+{
+   	text-align:center;
+	background-color:#800000;
+}
+#current
+{
+	border-style: solid;
+    border-color:#FFFF99;  
+	border-width:5px;	
+}
+.date
+{
+	text-align:left;
+	font-weight:bold;
+	color:#F5F5DC;
+}
+.fa-heart , .fa-pills , .fa-female
+{
+	margin-left:10% !important;
+	color:#F5F5DC;
+}
+a:hover
+{
+	text-decoration:none;
+}
+/*hover text*/
+.tooltiptext
+{
+	 display:none;
+	 position:absolute;
+	 bottom: 50px;
+}
+i:hover .tooltiptext
+{
+	display:inline;
+}
+
+@media (max-width: 768px)
+{
+	.fa-heart , .fa-pills , .fa-female
+	{
+		margin:0 ;
+		padding:0 ;
+		width:100% ;
+		font-size: 1rem;
+	}
+	.date
+	{
+		margin:0;
+		padding:0;
+	}
+	.fa-heart , .fa-pills 
+	{
+		margin-bottom:2vh  ;
+	}
+}
+@media all and (orientation:landscape) 
+{
+	.fa-heart , .fa-pills , .fa-female
+	{
+		margin:0 ;
+		padding:0 ;
+		font-size: 1rem;
+	}
+	.date
+		{
+			margin:0 ;
+			padding:0 ;
+		}
+}

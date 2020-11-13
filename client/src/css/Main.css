@@ -1,0 +1,36 @@
+body,html
+{
+	width:100%;
+	height:100%;
+	background-color:#FFF8DC !important;
+
+}
+body
+{
+    overflow-x:hidden;
+    /*overflow-y:hidden;*/ 
+}
+td
+{
+	margin:0 !important;
+   	padding:0 !important; 
+   	border-style: solid;
+    border-color: #F5F5DC;
+}
+.container
+{
+	margin-top:3vh;
+}
+.col
+{
+	padding:0;
+}
+#loader
+{
+	text-align: center;
+}
+
+@media (min-width: 992px) 
+{
+  
+}

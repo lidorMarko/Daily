@@ -1,0 +1,78 @@
+#top
+{
+	height:13vh !important;
+	padding:0;
+	margin:0;
+	background-color:#FFF8DC !important;
+}
+#month
+{
+	  font-weight: bold;
+	  font-size: 3vh;
+		padding:10px;
+		padding-top:0;
+}
+.fas
+{
+	color:#800000;
+	margin-top:10px;
+}
+.lr
+{	
+	  font-family: 'Open Sans', sans-serif;
+	  color:#800000;
+      text-shadow: 1px 1px;
+      border-color: #800000;
+	  background:none;
+	  font-size: 3vh;
+}
+.lr:hover
+{
+      border-color: white;	
+}
+
+#controler
+{
+	color:#800000;
+	font-weight:bold;
+	display: flex;	
+	font-size:3vh;
+}
+a
+{
+	color:white;
+	margin-right:5px;
+	margin-left: 5px;
+}
+a:hover
+{
+	color:white;
+}
+
+@media (max-width: 768px)
+{
+	.lr 
+	{	
+	   font-size: 1.5 vh;
+	   padding:5px;
+	}
+	#top
+	{
+		height:3vh;
+	}
+}
+@media all and (orientation:landscape) 
+{
+	#month
+	{
+		  font-size: 4vh;	
+	}
+	.lr
+	{	
+	  font-size: 1vh;
+	}
+}
+	
+	
+	
+	

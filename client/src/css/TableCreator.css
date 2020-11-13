@@ -1,0 +1,36 @@
+.days
+{
+    /*background-color:#50394c;*/	
+	border-style: solid;
+    border-color: #FFF8DC;  	
+	text-align:center;
+	color:#FFF8DC ;
+	padding:0;
+	margin:0;
+}
+tr
+{
+	border-style: solid;
+    border-color: #FFDAB9;  
+	color:#800000;
+	background-color:#800000;
+}
+table
+{
+	background-color:#FFF8DC;
+}
+
+@media all and (orientation:landscape) 
+{
+	.days
+	{
+		height:10vh !important;
+	}	
+}
+@media (min-width: 768px)
+{
+	.days
+	{
+		height:1.5vh !important;		
+	}	
+}
