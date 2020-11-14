@@ -7,6 +7,12 @@ import {
 
 export default class SignInUp extends Component
 {
+	constructor(props) 
+	  {
+	    super(props);
+	    this.authentication = this.authentication.bind(this);
+	    this.signUp = this.signUp.bind(this);
+	  }
 	componentDidMount() 
   	{
 		const signUpButton = document.getElementById('signUp');
@@ -23,6 +29,40 @@ export default class SignInUp extends Component
 			});
 		}
 	}
+	authentication()
+	{
+		var email=document.getElementById('LoginInputEmail').value;
+		var pass=document.getElementById('LoginInputPass').value;
+		alert("email= "+email+" pass= "+pass);
+		var body={email:email,pass:pass};
+		axios.post('/auth',body).then(response => {
+			if(response.data)
+				alert('currect');
+			else
+				alert('incurrect values!');			
+		})
+		.catch(err => {
+				    if ((err.response) || (err.request))
+				console.log("unable to fetch data from server");	
+		})	
+	}
+	signUp()
+	{
+		var email=document.getElementById('signUpInputEmail').value;
+		var pass=document.getElementById('signUpInputPass').value;
+		alert("email= "+email+" pass= "+pass);
+		var body={email:email,pass:pass};
+		axios.post('/signUp',body).then(response => {
+			if(response.data)
+				alert('succesfully added');
+			else
+				alert('something happend');			
+		})
+		.catch(err => {
+				    if ((err.response) || (err.request))
+				console.log("unable to fetch data from server");	
+		})	
+	}
 	
   render()
   {
@@ -37,10 +77,9 @@ export default class SignInUp extends Component
 					            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 					        </div>
 					        <span>or use your email for registration</span>
-					        <input type="text" placeholder="Name" />
-					        <input type="email" placeholder="Email" />
-					        <input type="password" placeholder="Password" />
-					        <button>Sign Up</button>
+					        <input id="signUpInputEmail" type="email" placeholder="email" />
+					        <input id="signUpInputPass" type="password" placeholder="Password" />
+					        <button onClick={(e) => {this.signUp();}}>Sign Up</button>
 							<Link exact to='/' >
 								<i className="x fas fa-times fa-2x"></i>
 							</Link>
@@ -55,10 +94,10 @@ export default class SignInUp extends Component
 					            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 					        </div>
 					        <span>or use your account</span>
-					        <input type="email" placeholder="Email" />
-					        <input type="password" placeholder="Password" />
+					        <input id="LoginInputEmail" type="Email" placeholder="Email" />
+					        <input id="LoginInputPass" type="password" placeholder="Password" />
 					        <a href="#">Forgot your password?</a>
-					        <button>Sign In</button>
+					        <button onClick={(e) => {this.authentication();}}>Sign In</button>
 							<Link exact to='/' >
 								<i className="x fas fa-times fa-2x"></i>
 							</Link>

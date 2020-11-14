@@ -8,6 +8,9 @@ var mysql = require('mysql');
 const app = express();
 const port = process.env.PORT ||5000 ;
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 require('dotenv').config();
 
 app.use(bodyParser.json());
@@ -24,17 +27,44 @@ var connection = mysql.createPool({
   database: process.env.REACT_APP_database
   
 })
-
-
-
-app.get('/api/passwords', (req, res) => {
-  
- res.json(`kjnkjnjknkjnkjnkj`);
+router.post('/auth',(request,response) => 
+{
+	/*bcrypt.hash(myPlaintextPassword, saltRounds).then(function(hash) {
+	    bcrypt.compare(myPlaintextPassword, hash).then(function(result) {
+    			response.send(JSON.stringify(result));
+		});
+	});*/
+	connection.query("SELECT password FROM `users` where email='"+request.body.email+"'", function (error, results, fields) 
+	{
+		if(results[0])
+		{
+			    bcrypt.compare(request.body.pass, results[0].password).then(function(result) {
+	    				response.send(JSON.stringify(result));
+				});
+		}
+		response.send(false);
+	});	
 });
-
-
-
-
+router.post('/signUp',(request,response) => 
+{
+	bcrypt.hash(request.body.pass, saltRounds).then(function(hash) {
+		connection.query("insert into users(email,password) values('"+request.body.email+"','"+hash+"')", function (error, results, fields) 
+		{
+			if (error) 
+			{
+				//throw error;
+				console.log("db error");
+				response.send(false);	
+			}
+			else
+			{
+				console.log("db updated successfully");
+				//building user table contains all of their future info
+				//???????????	
+			}
+		});
+	});	
+});
 router.post('/api/data',(request,response) => 
 {
     var outputArray = [];
