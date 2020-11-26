@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './components/Main';
 import SignInUp from './components/SignInUp';
-
 import {
 	  BrowserRouter as Router,
 	  Switch,

@@ -42,7 +42,6 @@ router.post('/auth',(request,response) =>
 	    				response.send(JSON.stringify(result));
 				});
 		}
-		response.send(false);
 	});	
 });
 router.post('/signUp',(request,response) => 
@@ -52,15 +51,22 @@ router.post('/signUp',(request,response) =>
 		{
 			if (error) 
 			{
-				//throw error;
 				console.log("db error");
 				response.send(false);	
 			}
 			else
-			{
-				console.log("db updated successfully");
-				//building user table contains all of their future info
-				//???????????	
+			{	
+				connection.query("INSERT INTO `data` (`id`, `january`, `february`, `march`, `april`, `may`, `june`, `july`, `august`, `september`, `october`, `november`, `dezember`) VALUES('"+request.body.email+"','111111111111111111111111111111111', '111111111111111111111111111111111', '111111111111111111111111111111111', '111111111111111111111111111111111', '111111111111111111111111111111111', '111111111111111111111111111111111', '111111111111111111111111111111111', '111111111111111111111111111111111', '111111111111111111111111111111111', '111111111111111111111111111111111', '111111111111111111111111111111111', '111111111111111111111111111111111')", function (error, results, fields) 
+				{
+					if (error) 
+
+						console.log("db error");
+					else
+					{
+						console.log("added successfully");					
+						response.send(true);
+					}
+				});		
 			}
 		});
 	});	

@@ -44,7 +44,7 @@ export default class DayCube extends Component
 	  var ele=document.getElementById(e.target.id);
 	  if(ele!==null)
 	  {
-	     if(ele.style.color!=color)
+	     if(ele.style.color=='white')
 			{					
 		        ele.style.setProperty ("color", color, "important");
 			}
@@ -63,8 +63,8 @@ export default class DayCube extends Component
   {
 	  if(this.props.data)
 		{
-		  var heart=this.props.data.charAt(0)=='1'?'#CD6155':'white';
-		  var pill=this.props.data.charAt(1)=='1'?'rgb(23, 162, 184)':'white';
+		  var heart=this.props.data.charAt(0)=='1'?'#FFA07A':'white';
+		  var pill=this.props.data.charAt(1)=='1'?'rgb(23,162,184)':'white';
 		  var period=this.props.data.charAt(2)=='1'?'#52BE80':'white';
 		}
 	
@@ -75,8 +75,8 @@ export default class DayCube extends Component
 	  if(this.props.text!=0)
 		{
 	  		output.push(<p className="date"> {this.props.text} </p>); 
-			output.push(<a href="#" onClick={(e) => {this.changeColor(e,'#CD6155');}} > <i id={idheart} style={{color:heart}} className='fas fa-heart fa-2x' data-tip="Intimate"> </i> </a>);
-	  		output.push(<a href="#" onClick={(e) => {this.changeColor(e,'rgb(23, 162, 184)');}} > <i id={idpill} style={{color:pill}} className='fas fa-pills fa-2x' data-tip="Pill"> </i> </a>);
+			output.push(<a href="#" onClick={(e) => {this.changeColor(e,'#FFA07A');}} > <i id={idheart} style={{color:heart}} className='fas fa-heart fa-2x' data-tip="Intimate"> </i> </a>);
+	  		output.push(<a href="#" onClick={(e) => {this.changeColor(e,'rgb(23,162,184)');}} > <i id={idpill} style={{color:pill}} className='fas fa-pills fa-2x' data-tip="Pill"> </i> </a>);
 	  		output.push(<a href="#" onClick={(e) => {this.changeColor(e,'#52BE80');}} > <i id={idperiod} style={{color:period}} className='fas fa-female fa-2x' data-tip="Period"> </i> </a>);	  
 		}
 	  
