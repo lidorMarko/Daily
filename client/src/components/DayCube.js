@@ -53,7 +53,7 @@ export default class DayCube extends Component
 			    ele.style.setProperty ("color", 'white', "important");  					
 			}
 		/*update db*/
-		var body={month:this.props.num , day:this.props.text ,data:this.getDataByColor(e)};
+		var body={user:this.props.user,data:this.props.data,month:this.props.num,day:this.props.text,color:color};
 		axios.post('/update',body)
 	      .then(response => console.log(response.data));
 	  }		
@@ -61,11 +61,57 @@ export default class DayCube extends Component
   
   render()
   {
-	  if(this.props.data)
+	  var value=JSON.stringify(this.props.data);
+	  var heart,pill,period;
+	  if(value)
 		{
-		  var heart=this.props.data.charAt(0)=='1'?'#FFA07A':'white';
-		  var pill=this.props.data.charAt(1)=='1'?'rgb(23,162,184)':'white';
-		  var period=this.props.data.charAt(2)=='1'?'#52BE80':'white';
+			var a=parseInt(this.props.text)+1;
+			var value2=value.charAt(a); /*=number between 0-7 */ 
+			if(value2==0)
+			{
+				  heart=pill=period='white';
+			}
+			if(value2==1)
+			{
+				heart=pill='white';
+				period='#52BE80';
+			}		   		  
+		    if(value2==2)
+			{
+				heart='white';
+				pill='rgb(23,162,184)';
+				period='white';
+			}  
+			if(value2==3)
+			{
+				heart='white';
+			    pill='rgb(23,162,184)';
+				period='#52BE80';
+			}
+			if(value2==4)
+			{
+				heart='#FFA07A';
+			    pill='white';
+				period='white';
+			}
+			if(value2==5)
+			{
+				heart='#FFA07A';
+			    pill='white';
+				period='#52BE80';
+			}
+			if(value2==6)
+			{
+				heart='#FFA07A';
+			    pill='rgb(23,162,184)';
+				period='white';
+			}
+			if(value2==7)
+			{
+				heart='#FFA07A';
+			    pill='rgb(23,162,184)';
+				period='#52BE80';
+			}		  
 		}
 	
 	  var output=[];

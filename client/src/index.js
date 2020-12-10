@@ -8,15 +8,16 @@ import {
 	  Route
 	} from "react-router-dom";
 
-var d = new Date();  
-{/*var month=months[d.getMonth()]; */}
+{/*var d = new Date();  
+var month=months[d.getMonth()]; 
+component={() => <Main />}*/}
 
 ReactDOM.render(
- <Router>  
+<Router>  
 	  <Switch>
+		  <Route exact path="/" component={() => <Main />} />
 		  <Route exact path="/signIn" component={SignInUp} />
-		  <Route exact path="/:num" component={Main} />
-		  <Route exact path="/" component={() => <Main num={d.getMonth()} />} />
+		  <Route exact path="/:num/:user" component={Main} />
 	   </Switch>
 </Router>,
 document.getElementById('root')

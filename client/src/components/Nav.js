@@ -1,11 +1,9 @@
 import React, { Component }  from 'react';
 import './../css/Nav.css';
 import ReactTypingEffect from 'react-typing-effect';
-
 import {
 	  Link
 	} from "react-router-dom";
-
 
 export default class DayCube extends Component
 {
@@ -16,6 +14,7 @@ export default class DayCube extends Component
 	}
   componentDidMount() 
 	{		
+console.log("kkk first created - Nav");
 		this.setState({num:this.props.num}); 
 		var next=parseInt(this.props.num)+1;
 		if(next>11)
@@ -28,20 +27,29 @@ export default class DayCube extends Component
 	}
   componentWillReceiveProps(newProps)
 	{
-		this.setState({num:newProps.num}); 
-		var next=parseInt(newProps.num)+1;
-		if(next>11)
-			  next=0;
-		this.setState({next:next}); 
-		var prev=parseInt(newProps.num)-1;
-		if(prev<0)
-			  prev=11;
-		this.setState({prev:prev});   		
+console.log("kkk received new props - Nav -"+newProps.num);
+		if(newProps.num)
+		{
+			if(newProps.num!=this.state.num)
+			{
+						console.log("lulita prev"+this.props.num);
+				this.setState({num:newProps.num}); 
+				var next=parseInt(newProps.num)+1;
+				if(next>11)
+					  next=0;
+				this.setState({next:next}); 
+				var prev=parseInt(newProps.num)-1;
+				if(prev<0)
+					  prev=11;
+				this.setState({prev:prev});
+			}
+		}	
 	}
 	
   render()
   {
 	  {/*calculating the current month in order send it to Nav component*/}
+console.log("kkk next="+this.state.next);
 	  var months = new Array();
 	  months[0] = "January";
 	  months[1] = "February";
@@ -55,9 +63,7 @@ export default class DayCube extends Component
 	  months[9] = "October";
 	  months[10] = "November";
 	  months[11] = "December";
-	  var month=months[this.state.num];
-	  					console.log("next="+this.state.next);    
-					console.log("prev="+this.state.prev);    
+	  var month=months[this.state.num];  
 
 	  return (
 			  <div id="top">
@@ -68,13 +74,13 @@ export default class DayCube extends Component
 						  </button>
 					  </Link>
 					  <div id="controler" dir="rtl">
-						  <Link exact to={{pathname:'/'+this.state.next  }} >
+						  <Link exact to={{pathname:'/'+this.state.next+'/'+this.props.user }} >
 							  <i className="fas fa-hand-point-right fa-lg"></i> 
 						  </Link>
 							  
 					      <p id="month">{month}</p>
 							  
-					      <Link exact to={{pathname:'/'+this.state.prev }} >
+					      <Link exact to={{pathname:'/'+this.state.prev+'/'+this.props.user }} >
 							  <i className="fas fa-hand-point-left fa-lg"></i> 
 						  </Link>
 					  </div>					  					  

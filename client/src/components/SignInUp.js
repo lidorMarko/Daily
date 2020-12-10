@@ -78,7 +78,7 @@ export default class SignInUp extends Component
 	  return(
 		<div>
 			{this.state.auth ? (
-						         <Redirect to={{ pathname: '/' }} />
+						         <Redirect to={{ pathname:'/'+d.getMonth()+'/'+this.state.email }} />
 					          ) : (
 				<div class="container" id="container">
 				    <div class="form-container sign-up-container">
